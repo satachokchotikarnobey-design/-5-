@@ -2,134 +2,144 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>Bible Story - Feeding 5000</title>
+<title>การ์ตูนพระคัมภีร์</title>
 
 <style>
-body {
-    font-family: sans-serif;
-    background: #f4f6ff;
-    text-align: center;
-    padding: 20px;
+body{
+    margin:0;
+    font-family:Arial;
+    background: linear-gradient(135deg,#a0e7ff,#ffeaa7);
+    text-align:center;
 }
 
-.card {
-    background: white;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    max-width: 600px;
-    margin: auto;
+.header{
+    padding:20px;
+    font-size:26px;
+    font-weight:bold;
+    background:rgba(255,255,255,0.85);
 }
 
-button, select {
-    padding: 12px;
-    margin: 8px;
-    border-radius: 10px;
-    border: none;
-    font-size: 16px;
+.box{
+    width:90%;
+    max-width:500px;
+    margin:30px auto;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 
-button {
-    background: #4a6fff;
-    color: white;
-    cursor: pointer;
+.scene{
+    padding:20px;
 }
 
-button:hover {
-    background: #2f4fff;
+/* ตัวละคร */
+.jesus{
+    width:120px;
+    height:160px;
+    margin:auto;
 }
 
-select {
-    background: #eee;
-}
-
-img {
-    width: 100%;
-    border-radius: 12px;
-    margin-top: 10px;
+/* ปุ่ม */
+button{
+    margin:10px;
+    padding:10px 15px;
+    border:none;
+    border-radius:10px;
+    background:#ff6bcb;
+    color:white;
+    cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="header">📖 การ์ตูนพระคัมภีร์ (ตัวละครจริง)</div>
 
-<h2>📖 พระคัมภีร์: ขนมปัง 5 ก้อน ปลา 2 ตัว</h2>
+<div class="box">
 
-<p id="story">
-พระเยซูทรงอยู่ท่ามกลางฝูงชนมากกว่า 5,000 คน  
-ผู้คนหิวและไม่มีอาหารเพียงพอ  
-มีเด็กคนหนึ่งนำขนมปัง 5 ก้อน และปลา 2 ตัวมาให้  
-พระเยซูทรงอวยพรอาหารนั้น  
-และเกิดการอัศจรรย์ อาหารถูกแบ่งให้ทุกคนอิ่ม  
-และยังเหลืออีกมากมาย  
-นี่คือการอัศจรรย์แห่งความรักและการแบ่งปัน
+<div class="scene">
+
+<!-- ตัวการ์ตูนพระเยซู (SVG วาดเอง) -->
+<svg class="jesus" viewBox="0 0 200 260">
+
+<!-- หัว -->
+<circle cx="100" cy="60" r="35" fill="#f2c9a0"/>
+
+<!-- ผม -->
+<path d="M65,55 Q100,10 135,55 Q120,40 100,45 Q80,40 65,55" fill="#5b3a29"/>
+
+<!-- หนวดเครา -->
+path d="M80,75 Q100,100 120,75 Q110,110 100,115 Q90,110 80,75" fill="#3b2a22"/>
+
+<!-- ตัวเสื้อ -->
+<rect x="60" y="100" width="80" height="120" rx="20" fill="#ffffff" stroke="#ccc"/>
+
+<!-- สายคาด -->
+<rect x="60" y="150" width="80" height="10" fill="#ffcc66"/>
+
+<!-- มือ -->
+<circle cx="55" cy="140" r="10" fill="#f2c9a0"/>
+<circle cx="145" cy="140" r="10" fill="#f2c9a0"/>
+
+</svg>
+
+<h2 id="title">🐟 จุดเริ่มต้น</h2>
+
+<p id="text">
+เด็กคนหนึ่งมีปลาทู 5 ตัว และขนมปัง 3 ก้อนเล็ก ๆ
 </p>
 
-<h3>🔊 เลือกเสียงอ่าน</h3>
-<select id="voiceSelect"></select>
+<button onclick="prev()">⬅ ก่อนหน้า</button>
+<button onclick="next()">➡ ถัดไป</button>
 
-<br>
-
-<button onclick="speak()">▶ เล่นเสียง</button>
-<button onclick="stop()">⏹ หยุด</button>
-
-<hr>
-
-<h3>🌸 การ์ตูนน่ารัก</h3>
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Jesus_feeding_the_5000.jpg">
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Bible_and_cross.jpg/800px-Bible_and_cross.jpg">
+</div>
 
 </div>
 
 <script>
-let voices = [];
 
-// โหลดเสียงทั้งหมด
-function loadVoices() {
-    voices = window.speechSynthesis.getVoices();
+let step = 0;
 
-    let select = document.getElementById("voiceSelect");
-    select.innerHTML = "";
+let story = [
+{
+title:"🐟 จุดเริ่มต้น",
+text:"เด็กคนหนึ่งมีปลาทู 5 ตัว และขนมปัง 3 ก้อนเล็ก ๆ"
+},
+{
+title:"🙏 พระเยซูรับอาหาร",
+text:"พระเยซูทรงรับอาหารนั้นและอธิษฐานต่อพระเจ้า"
+},
+{
+title:"✨ อัศจรรย์เกิดขึ้น",
+text:"พระเจ้าทรงเพิ่มอาหารอย่างมหัศจรรย์ ไม่เคยหมด"
+},
+{
+title:"🍞 เลี้ยงคน 5,000 คน",
+text:"อาหารพอเลี้ยงคนมากกว่า 5,000 คน ทุกคนอิ่ม"
+}
+];
 
-    voices.forEach((v, i) => {
-        let option = document.createElement("option");
-        option.value = i;
-
-        let gender =
-            v.name.toLowerCase().includes("female") ? "👩 ผู้หญิง"
-            : v.name.toLowerCase().includes("male") ? "👨 ผู้ชาย"
-            : "🔊 เสียงทั่วไป";
-
-        option.text = gender + " - " + v.name;
-        select.appendChild(option);
-    });
+function update(){
+document.getElementById("title").innerText = story[step].title;
+document.getElementById("text").innerText = story[step].text;
 }
 
-// เล่นเสียง
-function speak() {
-    let text = document.getElementById("story").innerText;
-    let speech = new SpeechSynthesisUtterance(text);
-
-    let index = document.getElementById("voiceSelect").value;
-    speech.voice = voices[index];
-
-    speech.rate = 0.9;
-    speech.pitch = 1;
-
-    window.speechSynthesis.speak(speech);
+function next(){
+if(step < story.length - 1){
+step++;
+update();
+}
 }
 
-// หยุดเสียง
-function stop() {
-    window.speechSynthesis.cancel();
+function prev(){
+if(step > 0){
+step--;
+update();
+}
 }
 
-window.speechSynthesis.onvoiceschanged = loadVoices;
-loadVoices();
 </script>
 
 </body>
