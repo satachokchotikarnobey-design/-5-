@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Bible Story - Feeding 5000</title>
+
+<style>
+body {
+    font-family: sans-serif;
+    background: #f4f6ff;
+    text-align: center;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: auto;
+}
+
+button, select {
+    padding: 12px;
+    margin: 8px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+button {
+    background: #4a6fff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2f4fff;
+}
+
+select {
+    background: #eee;
+}
+
+img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>📖 พระคัมภีร์: ขนมปัง 5 ก้อน ปลา 2 ตัว</h2>
+
+<p id="story">
+พระเยซูทรงอยู่ท่ามกลางฝูงชนมากกว่า 5,000 คน  
+ผู้คนหิวและไม่มีอาหารเพียงพอ  
+มีเด็กคนหนึ่งนำขนมปัง 5 ก้อน และปลา 2 ตัวมาให้  
+พระเยซูทรงอวยพรอาหารนั้น  
+และเกิดการอัศจรรย์ อาหารถูกแบ่งให้ทุกคนอิ่ม  
+และยังเหลืออีกมากมาย  
+นี่คือการอัศจรรย์แห่งความรักและการแบ่งปัน
+</p>
+
+<!-- เลือกเสียง -->
+<select id="voiceSelect"></select>
+
+<br>
+
+<button onclick="speak()">▶ เล่นเสียง</button>
+<button onclick="stop()">⏹ หยุด</button>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Jesus_feeding_the_5000.jpg">
+
+</div>
+
+<script>
+let voices = [];
+let selectedVoice = null;
+
+// โหลดเสียงทั้งหมดในเครื่อง
+function loadVoices() {
+    voices = window.speechSynthesis.getVoices();
+
+    let select = document.getElementById("voiceSelect");
+    select.innerHTML = "";
+
+    voices.forEach((v, i) => {
+        let option = document.createElement("option");
+        option.value = i;
+
+        // เดาเพศเสียง (ง่าย ๆ)
+        let gender = v.name.toLowerCase().includes("female") ? "👩 ผู้หญิง"
+                     : v.name.toLowerCase().includes("male") ? "👨 ผู้ชาย"
+                     : "🔊 เสียงทั่วไป";
+
+        option.text = gender + " - " + v.name;
+        select.appendChild(option);
+    });
+}
+
+// เล่นเสียง
+function speak() {
+    let text = document.getElementById("story").innerText;
+    let speech = new SpeechSynthesisUtterance(text);
+
+    let index = document.getElementById("voiceSelect").value;
+    speech.voice = voices[index];
+
+    speech.rate = 0.9;
+    speech.pitch = 1;
+
+    window.speechSynthesis.speak(speech);
+}
+
+// หยุดเสียง
+function stop() {
+    window.speechSynthesis.cancel();
+}
+
+// โหลดเสียงตอนเปิด
+window.speechSynthesis.onvoiceschanged = loadVoices;
+loadVoices();
+</script>
+
+</body>
+</html>
