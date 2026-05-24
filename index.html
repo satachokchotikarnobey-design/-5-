@@ -67,7 +67,7 @@ img {
 นี่คือการอัศจรรย์แห่งความรักและการแบ่งปัน
 </p>
 
-<!-- เลือกเสียง -->
+<h3>🔊 เลือกเสียงอ่าน</h3>
 <select id="voiceSelect"></select>
 
 <br>
@@ -75,15 +75,20 @@ img {
 <button onclick="speak()">▶ เล่นเสียง</button>
 <button onclick="stop()">⏹ หยุด</button>
 
+<hr>
+
+<h3>🌸 การ์ตูนน่ารัก</h3>
+
 <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Jesus_feeding_the_5000.jpg">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Bible_and_cross.jpg/800px-Bible_and_cross.jpg">
 
 </div>
 
 <script>
 let voices = [];
-let selectedVoice = null;
 
-// โหลดเสียงทั้งหมดในเครื่อง
+// โหลดเสียงทั้งหมด
 function loadVoices() {
     voices = window.speechSynthesis.getVoices();
 
@@ -94,10 +99,10 @@ function loadVoices() {
         let option = document.createElement("option");
         option.value = i;
 
-        // เดาเพศเสียง (ง่าย ๆ)
-        let gender = v.name.toLowerCase().includes("female") ? "👩 ผู้หญิง"
-                     : v.name.toLowerCase().includes("male") ? "👨 ผู้ชาย"
-                     : "🔊 เสียงทั่วไป";
+        let gender =
+            v.name.toLowerCase().includes("female") ? "👩 ผู้หญิง"
+            : v.name.toLowerCase().includes("male") ? "👨 ผู้ชาย"
+            : "🔊 เสียงทั่วไป";
 
         option.text = gender + " - " + v.name;
         select.appendChild(option);
@@ -123,7 +128,6 @@ function stop() {
     window.speechSynthesis.cancel();
 }
 
-// โหลดเสียงตอนเปิด
 window.speechSynthesis.onvoiceschanged = loadVoices;
 loadVoices();
 </script>
