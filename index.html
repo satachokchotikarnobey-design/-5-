@@ -2,166 +2,132 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>พระคัมภีร์สำหรับเด็ก</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>พระเยซูเลี้ยงคน 5,000 คน</title>
 
 <style>
 body{
     margin:0;
-    font-family:Arial;
-    background: linear-gradient(135deg,#ffd6ff,#a0e7ff,#caffbf);
+    font-family:Arial,sans-serif;
+    background:linear-gradient(to bottom,#87CEEB,#FFFACD);
     text-align:center;
 }
 
-.header{
-    padding:18px;
-    font-size:26px;
+header{
+    background:#FFD700;
+    color:#333;
+    padding:20px;
+    font-size:30px;
     font-weight:bold;
-    background:rgba(255,255,255,0.7);
-    color:#ff4fb0;
 }
 
-.box{
-    width:92%;
-    max-width:520px;
-    margin:25px auto;
-    background:white;
-    border-radius:25px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-    padding:15px;
-}
-
-/* ตัวละครพระเยซู */
-.hero{
-    width:170px;
-    margin-top:10px;
-    animation: float 2.5s infinite ease-in-out;
+.character{
+    width:250px;
+    margin-top:20px;
+    animation:float 3s ease-in-out infinite;
 }
 
 @keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-10px);}
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+    100%{transform:translateY(0);}
 }
 
-h2{color:#ff4fb0;}
+.card{
+    background:white;
+    width:85%;
+    max-width:700px;
+    margin:20px auto;
+    padding:20px;
+    border-radius:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
 
 button{
-    margin:8px;
-    padding:10px 15px;
-    border:none;
-    border-radius:15px;
-    background:linear-gradient(135deg,#ff6bcb,#7afcff);
+    background:#4CAF50;
     color:white;
-    font-weight:bold;
+    border:none;
+    padding:12px 25px;
+    border-radius:30px;
+    font-size:18px;
     cursor:pointer;
-    transition:0.2s;
 }
 
-button:hover{transform:scale(1.05);}
+button:hover{
+    transform:scale(1.05);
+}
 
-.sparkle{font-size:20px;}
+#verse{
+    margin-top:15px;
+    font-size:18px;
+    color:#444;
+}
+
+footer{
+    background:#FFD700;
+    padding:15px;
+    margin-top:20px;
+}
 </style>
 </head>
 
 <body>
 
-<div class="header">📖 พระคัมภีร์สำหรับเด็ก 💖</div>
+<header>
+📖 พระคัมภีร์สำหรับเด็ก
+</header>
 
-<div class="box">
+<img class="character"
+src="https://cdn-icons-png.flaticon.com/512/706/706830.png"
+alt="การ์ตูนเด็ก">
 
-<!-- พระเยซูการ์ตูน (น่ารักนุ่ม ๆ) -->
-<svg class="hero" viewBox="0 0 200 220">
+<div class="card">
 
-<!-- แสง -->
-<circle cx="100" cy="60" r="45" fill="#fff3b0" opacity="0.6"/>
+<h2>🍞🐟 พระเยซูเลี้ยงคน 5,000 คน</h2>
 
-<!-- หัว -->
-<circle cx="100" cy="70" r="35" fill="#ffd6a5"/>
+<p>
+วันหนึ่งมีผู้คนจำนวนมากเดินทางมาฟังพระเยซูสอน
+พวกเขาฟังจนถึงเวลาเย็นและเริ่มหิวอาหาร
+</p>
 
-<!-- ผม -->
-<path d="M65 70 Q100 15 135 70 Q120 55 100 60 Q80 55 65 70"
-fill="#5b3a29"/>
+<p>
+มีเด็กคนหนึ่งนำขนมปัง 5 ก้อน และปลา 2 ตัว
+มามอบให้พระเยซู
+</p>
 
-<!-- ตา -->
-<circle cx="88" cy="75" r="4"/>
-<circle cx="112" cy="75" r="4"/>
+<p>
+พระเยซูทรงอธิษฐานขอบคุณพระเจ้า
+แล้วทรงแจกอาหารให้ผู้คน
+</p>
 
-<!-- ยิ้ม -->
-<path d="M85 88 Q100 102 115 88" stroke="black" stroke-width="3" fill="none"/>
+<p>
+เกิดการอัศจรรย์!
+ทุกคนกว่า 5,000 คนได้รับประทานอาหารจนอิ่ม
+และยังเหลืออีก 12 ตะกร้า
+</p>
 
-<!-- เสื้อ -->
-<rect x="60" y="105" width="80" height="90" rx="20" fill="#ffffff"/>
+<p>
+✨ พระเจ้าทรงดูแลและจัดเตรียมสิ่งที่เราต้องการเสมอ
+</p>
 
-<!-- สายคาด -->
-<rect x="60" y="145" width="80" height="10" fill="#ffcc66"/>
+<button onclick="showVerse()">
+📖 ข้อพระคัมภีร์วันนี้
+</button>
 
-</svg>
-
-<h2 id="title">🐟 จุดเริ่มต้น</h2>
-
-<p id="text">เด็กมีปลาทู 5 ตัว กับขนมปัง 3 ก้อน</p>
-
-<div class="sparkle">✨ 💖 🌈 ✨</div>
-
-<button onclick="prev()">⬅ ก่อนหน้า</button>
-<button onclick="next()">➡ ถัดไป</button>
-<button onclick="speak()">🔊 ฟังเสียง</button>
+<p id="verse"></p>
 
 </div>
 
+<footer>
+❤️ พระเยซูทรงรักเด็กทุกคน ❤️
+</footer>
+
 <script>
-
-let step = 0;
-
-let story = [
-{
-title:"🐟 จุดเริ่มต้น",
-text:"เด็กคนหนึ่งมีปลาทู 5 ตัว และขนมปัง 3 ก้อนเล็ก ๆ"
-},
-{
-title:"🙏 พระเยซูอธิษฐาน",
-text:"พระเยซูทรงรับอาหารและอธิษฐานด้วยความรัก"
-},
-{
-title:"✨ อัศจรรย์เกิดขึ้น",
-text:"พระเจ้าทรงทำการอัศจรรย์ให้อาหารเพิ่มขึ้น"
-},
-{
-title:"🍞 เลี้ยงคน 5,000 คน",
-text:"พระเยซูทรงเลี้ยงคนมากกว่า 5,000 คน ทุกคนอิ่ม 💖"
+function showVerse(){
+document.getElementById("verse").innerHTML =
+"จงให้เด็กเล็ก ๆ มาหาเราเถิด - มัทธิว 19:14";
 }
-];
-
-/* อัปเดตข้อความ */
-function update(){
-document.getElementById("title").innerText = story[step].title;
-document.getElementById("text").innerText = story[step].text;
-}
-
-/* เลื่อนเรื่อง */
-function next(){
-if(step < story.length-1){
-step++;
-update();
-}
-}
-
-function prev(){
-if(step > 0){
-step--;
-update();
-}
-}
-
-/* 🔊 เสียงเล่า */
-function speak(){
-let msg = new SpeechSynthesisUtterance(story[step].text);
-msg.lang = "th-TH";
-msg.rate = 0.9;
-msg.pitch = 1.25; // น่ารักขึ้น
-speechSynthesis.speak(msg);
-}
-
 </script>
 
 </body>
-</html>
+</html>.
