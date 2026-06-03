@@ -6,128 +6,192 @@
 <title>พระเยซูเลี้ยงคน 5,000 คน</title>
 
 <style>
+
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:linear-gradient(to bottom,#87CEEB,#FFFACD);
-    text-align:center;
+margin:0;
+overflow-x:hidden;
+font-family:Arial,sans-serif;
+background:linear-gradient(#6ec6ff,#dff8ff,#a5d6a7);
+text-align:center;
 }
 
-header{
-    background:#FFD700;
-    color:#333;
-    padding:20px;
-    font-size:30px;
-    font-weight:bold;
+/* เมฆ */
+.cloud{
+position:absolute;
+font-size:60px;
+animation:cloudMove 25s linear infinite;
 }
 
-.character{
-    width:250px;
-    margin-top:20px;
-    animation:float 3s ease-in-out infinite;
+.c1{top:20px;}
+.c2{top:100px;animation-duration:35s;}
+
+@keyframes cloudMove{
+from{left:-200px;}
+to{left:110%;}
+}
+
+/* แสง */
+.light{
+position:absolute;
+top:0;
+left:50%;
+transform:translateX(-50%);
+width:300px;
+height:300px;
+background:radial-gradient(circle,
+rgba(255,255,180,.9),
+rgba(255,255,180,0));
+animation:glow 2s infinite;
+}
+
+@keyframes glow{
+0%{opacity:.4;}
+50%{opacity:1;}
+100%{opacity:.4;}
+}
+
+/* ภาพพระเยซู */
+.hero{
+width:420px;
+max-width:90%;
+margin-top:80px;
+animation:float 4s ease-in-out infinite;
+position:relative;
+z-index:2;
 }
 
 @keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-20px);}
-    100%{transform:translateY(0);}
+0%{transform:translateY(0);}
+50%{transform:translateY(-20px);}
+100%{transform:translateY(0);}
 }
 
-.card{
-    background:white;
-    width:85%;
-    max-width:700px;
-    margin:20px auto;
-    padding:20px;
-    border-radius:25px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+/* ขนมปัง */
+.bread{
+position:absolute;
+font-size:50px;
+animation:breadFloat 3s infinite;
 }
 
-button{
-    background:#4CAF50;
-    color:white;
-    border:none;
-    padding:12px 25px;
-    border-radius:30px;
-    font-size:18px;
-    cursor:pointer;
+.b1{left:15%;top:250px;}
+.b2{left:75%;top:280px;animation-delay:1s;}
+.b3{left:30%;top:450px;animation-delay:2s;}
+
+@keyframes breadFloat{
+0%{transform:translateY(0);}
+50%{transform:translateY(-25px);}
+100%{transform:translateY(0);}
 }
 
-button:hover{
-    transform:scale(1.05);
+/* ปลา */
+.fish{
+position:absolute;
+font-size:50px;
+animation:fishSwim 8s linear infinite;
 }
 
-#verse{
-    margin-top:15px;
-    font-size:18px;
-    color:#444;
+.f1{top:200px;}
+.f2{top:400px;animation-delay:4s;}
+
+@keyframes fishSwim{
+from{left:-100px;}
+to{left:110%;}
 }
 
-footer{
-    background:#FFD700;
-    padding:15px;
-    margin-top:20px;
+/* ฝูงชน */
+.crowd{
+font-size:45px;
+padding:20px;
+line-height:70px;
+animation:crowdBounce 2s infinite;
 }
+
+@keyframes crowdBounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-5px);}
+}
+
+.story{
+background:white;
+width:90%;
+max-width:900px;
+margin:30px auto;
+padding:25px;
+border-radius:25px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+font-size:20px;
+}
+
+.title{
+font-size:38px;
+font-weight:bold;
+color:#ff9800;
+margin-top:20px;
+}
+
 </style>
 </head>
-
 <body>
 
-<header>
-📖 พระคัมภีร์สำหรับเด็ก
-</header>
+<div class="cloud c1">☁️ ☁️ ☁️</div>
+<div class="cloud c2">☁️ ☁️</div>
 
-<img class="character"
-src="https://cdn-icons-png.flaticon.com/512/706/706830.png"
-alt="การ์ตูนเด็ก">
+<div class="light"></div>
 
-<div class="card">
+<div class="fish f1">🐟</div>
+<div class="fish f2">🐟</div>
 
-<h2>🍞🐟 พระเยซูเลี้ยงคน 5,000 คน</h2>
+<div class="bread b1">🍞</div>
+<div class="bread b2">🍞</div>
+<div class="bread b3">🍞</div>
+
+<div class="title">
+📖 พระเยซูเลี้ยงคน 5,000 คน
+</div>
+
+<img src="jesus5000.png" class="hero">
+
+<div class="crowd">
+👨 👩 👦 👧 👨 👩 👦 👧 👨 👩 👦 👧
+<br>
+👨 👩 👦 👧 👨 👩 👦 👧 👨 👩 👦 👧
+<br>
+👨 👩 👦 👧 👨 👩 👦 👧 👨 👩 👦 👧
+</div>
+
+<div class="story">
+
+<h2>🍞🐟 การอัศจรรย์ของพระเยซู</h2>
 
 <p>
-วันหนึ่งมีผู้คนจำนวนมากเดินทางมาฟังพระเยซูสอน
-พวกเขาฟังจนถึงเวลาเย็นและเริ่มหิวอาหาร
+วันหนึ่งผู้คนจำนวนมากมาฟังพระเยซูสอน
+จนถึงเวลาเย็นทุกคนเริ่มหิวอาหาร
 </p>
 
 <p>
-มีเด็กคนหนึ่งนำขนมปัง 5 ก้อน และปลา 2 ตัว
-มามอบให้พระเยซู
+เด็กคนหนึ่งนำขนมปัง 5 ก้อน
+และปลา 2 ตัวมาถวาย
 </p>
 
 <p>
 พระเยซูทรงอธิษฐานขอบคุณพระเจ้า
-แล้วทรงแจกอาหารให้ผู้คน
+และแจกอาหารให้ผู้คน
 </p>
 
 <p>
-เกิดการอัศจรรย์!
+✨ เกิดการอัศจรรย์ ✨
+</p>
+
+<p>
 ทุกคนกว่า 5,000 คนได้รับประทานอาหารจนอิ่ม
-และยังเหลืออีก 12 ตะกร้า
+และยังเหลืออาหารอีก 12 ตะกร้า
 </p>
 
 <p>
-✨ พระเจ้าทรงดูแลและจัดเตรียมสิ่งที่เราต้องการเสมอ
+❤️ พระเจ้าทรงดูแลผู้คนเสมอ ❤️
 </p>
-
-<button onclick="showVerse()">
-📖 ข้อพระคัมภีร์วันนี้
-</button>
-
-<p id="verse"></p>
 
 </div>
 
-<footer>
-❤️ พระเยซูทรงรักเด็กทุกคน ❤️
-</footer>
-
-<script>
-function showVerse(){
-document.getElementById("verse").innerHTML =
-"จงให้เด็กเล็ก ๆ มาหาเราเถิด - มัทธิว 19:14";
-}
-</script>
-
 </body>
-</html>.
+</html>
